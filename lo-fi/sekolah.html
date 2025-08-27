@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuota Sekolah - ULAS Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">ULAS</div>
+            <div class="sidebar-nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="siswa.html">Data Siswa</a>
+                <a href="sekolah.html">Kuota Sekolah</a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Kuota Sekolah</h1>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" data-modal-target="tambahSekolahModal">Tambah Sekolah</button>
+                </div>
+            </header>
+
+            <div class="page-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>NPSN</th>
+                            <th>Nama Sekolah</th>
+                            <th>Kuota Afirmasi</th>
+                            <th>Terpakai</th>
+                            <th>Sisa</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20300123</td>
+                            <td>SMAN 1 Kota</td>
+                            <td>50</td>
+                            <td>35</td>
+                            <td>15</td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>20300456</td>
+                            <td>SMKN 2 Kota</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>0</td>
+                            <td><button class="btn">Edit</button>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Tambah Sekolah -->
+    <div id="tambahSekolahModal" class="modal-overlay hidden">
+         <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Sekolah Baru</h2>
+                <button class="close-button">&times;</button>
+            </div>
+            <form id="add-sekolah-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="npsn">NPSN</label>
+                        <input type="text" id="npsn">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_sekolah">Nama Sekolah</label>
+                        <input type="text" id="nama_sekolah">
+                    </div>
+                    <div class="form-group">
+                        <label for="kuota">Kuota Afirmasi</label>
+                        <input type="number" id="kuota">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-button">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

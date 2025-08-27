@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ULAS Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">ULAS</div>
+            <div class="sidebar-nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="siswa.html">Data Siswa</a>
+                <a href="sekolah.html">Kuota Sekolah</a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Dashboard</h1>
+                <div>Halo, Admin Budi</div>
+            </header>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Pendaftar</h3>
+                    <p>1,520</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Diterima</h3>
+                    <p>1,200</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Ditolak</h3>
+                    <p>120</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Dalam Proses</h3>
+                    <p>200</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
