@@ -119,4 +119,91 @@ document.addEventListener("DOMContentLoaded", () => {
   if (verifikasiFilter)
     verifikasiFilter.addEventListener("change", filterTable);
   if (statusFilter) statusFilter.addEventListener("change", filterTable);
+
+  /* 
+    ==================================================
+    LOGIKA BARU: Inisialisasi Donut Charts di Dashboard
+    ==================================================
+    */
+  const demakChartCanvas = document.getElementById("demakChart");
+  const jeparaChartCanvas = document.getElementById("jeparaChart");
+
+  // Pastikan kita berada di halaman dashboard sebelum menjalankan kode chart
+  if (demakChartCanvas && jeparaChartCanvas) {
+    // --- Data & Konfigurasi untuk Chart DEMAK ---
+    const dataDemak = {
+      labels: ["Terpakai", "Sisa"],
+      datasets: [
+        {
+          label: "Kuota Demak",
+          data: [227, 23], // [Terpakai, Sisa]
+          backgroundColor: [
+            "rgba(0, 123, 255, 0.8)", // Biru untuk Terpakai
+            "rgba(220, 220, 220, 0.8)", // Abu-abu untuk Sisa
+          ],
+          borderColor: ["rgba(0, 123, 255, 1)", "rgba(200, 200, 200, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    const configDemak = {
+      type: "doughnut", // Tipe chart diubah menjadi doughnut
+      data: dataDemak,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Kuota Wilayah Demak",
+            font: { size: 16 },
+          },
+        },
+      },
+    };
+
+    new Chart(demakChartCanvas, configDemak);
+
+    // --- Data & Konfigurasi untuk Chart JEPARA ---
+    const dataJepara = {
+      labels: ["Terpakai", "Sisa"],
+      datasets: [
+        {
+          label: "Kuota Jepara",
+          data: [242, 13], // [Terpakai, Sisa]
+          backgroundColor: [
+            "rgba(40, 167, 69, 0.8)", // Hijau untuk Terpakai
+            "rgba(220, 220, 220, 0.8)", // Abu-abu untuk Sisa
+          ],
+          borderColor: ["rgba(40, 167, 69, 1)", "rgba(200, 200, 200, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    const configJepara = {
+      type: "doughnut", // Tipe chart diubah menjadi doughnut
+      data: dataJepara,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Kuota Wilayah Jepara",
+            font: { size: 16 },
+          },
+        },
+      },
+    };
+
+    new Chart(jeparaChartCanvas, configJepara);
+  }
 });

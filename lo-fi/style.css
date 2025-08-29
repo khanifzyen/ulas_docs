@@ -148,6 +148,12 @@ PERUBAHAN KUNCI UNTUK SCROLL TABEL
 .hidden { display: none; }
 
 /* --- Responsive Design --- */
+@media (max-width: 992px) { /* Titik breakpoint baru untuk grafik */
+    .chart-grid {
+        grid-template-columns: 1fr; /* Tumpuk grafik di layar tablet/kecil */
+    }
+}
+
 @media (max-width: 768px) {
     body {
         overflow: auto;
@@ -202,3 +208,22 @@ PERUBAHAN KUNCI UNTUK SCROLL TABEL
     #hamburger-menu { display: none; }
     .filter-bar { flex-direction: column; align-items: stretch; }
 }
+
+/* 
+==================================================
+CSS BARU UNTUK GRID GRAFIK
+==================================================
+*/
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dua kolom dengan lebar sama */
+    gap: 30px; /* Jarak antar grafik */
+    margin-top: 20px;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px; /* Ukuran yang pas untuk donut chart */
+    width: 100%;
+}
+/* ================================================== */

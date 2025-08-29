@@ -66,9 +66,24 @@
                         <p>200</p>
                     </div>
                 </div>
+                <!-- KONTEN BARU: KARTU UNTUK GRAFIK -->
+                <div class="page-card" style="margin-top: 30px;">
+                    <h2>Utilisasi Kuota per Wilayah</h2>
+                    <!-- STRUKTUR BARU UNTUK DUA GRAFIK -->
+                    <div class="chart-grid">
+                        <div class="chart-container">
+                            <canvas id="demakChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="jeparaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
+    <!-- PENTING: Tambahkan CDN Chart.js SEBELUM script.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
