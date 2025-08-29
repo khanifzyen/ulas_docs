@@ -27,6 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // --- LOGIKA BARU: Hamburger Menu ---
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const sidebar = document.querySelector(".sidebar");
+
+  if (hamburgerMenu && sidebar) {
+    hamburgerMenu.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+    });
+  }
+
   // --- Logika Modal ---
   const modalTriggers = document.querySelectorAll("[data-modal-target]");
   const modalOverlays = document.querySelectorAll(".modal-overlay");
@@ -64,10 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- FUNGSI BARU: PENCARIAN DAN FILTER ---
+  // --- FUNGSI PENCARIAN DAN FILTER ---
   const searchInput = document.getElementById("searchInput");
   const kategoriFilter = document.getElementById("kategoriFilter");
-  const verifikasiFilter = document.getElementById("verifikasiFilter"); // Filter baru
+  const verifikasiFilter = document.getElementById("verifikasiFilter");
   const statusFilter = document.getElementById("statusFilter");
   const siswaTableBody = document.getElementById("siswaTableBody");
   const tableRows = siswaTableBody
@@ -77,40 +87,36 @@ document.addEventListener("DOMContentLoaded", () => {
   function filterTable() {
     const searchText = searchInput.value.toLowerCase();
     const kategoriValue = kategoriFilter.value.toLowerCase();
-    const verifikasiValue = verifikasiFilter.value.toLowerCase(); // Nilai filter baru
+    const verifikasiValue = verifikasiFilter.value.toLowerCase();
     const statusValue = statusFilter.value.toLowerCase();
 
-    // Loop melalui semua baris tabel
     for (let i = 0; i < tableRows.length; i++) {
       const row = tableRows[i];
       const nama = row.cells[0].textContent.toLowerCase();
       const nik = row.cells[1].textContent.toLowerCase();
-      const verifikasi = row.cells[3].textContent.toLowerCase(); // Kolom verifikasi baru
-      const kategori = row.cells[4].textContent.toLowerCase();
-      const status = row.cells[5].textContent.toLowerCase();
+      const verifikasi = row.cells[4].textContent.toLowerCase();
+      const kategori = row.cells[5].textContent.toLowerCase();
+      const status = row.cells[6].textContent.toLowerCase();
 
-      // Cek kondisi filter
       const searchMatch = nama.includes(searchText) || nik.includes(searchText);
       const kategoriMatch =
         kategoriValue === "semua" || kategori.includes(kategoriValue);
       const verifikasiMatch =
-        verifikasiValue === "semua" || verifikasi.includes(verifikasiValue); // Pengecekan baru
+        verifikasiValue === "semua" || verifikasi.includes(verifikasiValue);
       const statusMatch =
         statusValue === "semua" || status.includes(statusValue);
 
-      // Tampilkan atau sembunyikan baris
       if (searchMatch && kategoriMatch && verifikasiMatch && statusMatch) {
-        row.style.display = ""; // Tampilkan baris
+        row.style.display = "";
       } else {
-        row.style.display = "none"; // Sembunyikan baris
+        row.style.display = "none";
       }
     }
   }
 
-  // Tambahkan event listener ke semua input filter
   if (searchInput) searchInput.addEventListener("keyup", filterTable);
   if (kategoriFilter) kategoriFilter.addEventListener("change", filterTable);
   if (verifikasiFilter)
-    verifikasiFilter.addEventListener("change", filterTable); // Listener baru
+    verifikasiFilter.addEventListener("change", filterTable);
   if (statusFilter) statusFilter.addEventListener("change", filterTable);
 });

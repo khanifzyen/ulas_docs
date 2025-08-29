@@ -4,134 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Siswa - ULAS Prototype</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-layout">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <div class="sidebar-header">ULAS</div>
+            <div class="sidebar-header"><span class="sidebar-logo-text">ULAS</span></div>
             <div class="sidebar-nav">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="siswa.html">Data Siswa</a>
-                <a href="sekolah.html">Kuota Sekolah</a>
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Dashboard</span></a>
+                <a href="siswa.html"><i class="fas fa-users"></i><span class="nav-text">Data Siswa</span></a>
+                <a href="sekolah.html"><i class="fas fa-school"></i><span class="nav-text">Kuota Sekolah</span></a>
             </div>
             <div class="sidebar-footer">
-                <a href="#" id="logout-btn">Logout</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span class="nav-text">Logout</span></a>
             </div>
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <div class="main-content-wrapper">
             <header class="main-header">
-                <h1>Data Siswa</h1>
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" data-modal-target="tambahSiswaModal">Tambah Siswa</button>
-                    <button class="btn btn-primary" data-modal-target="importSiswaModal">Import Siswa</button>
+                <div class="header-left">
+                    <button id="hamburger-menu" class="btn"><i class="fas fa-bars"></i></button>
+                    <h1>Data Siswa</h1>
                 </div>
+                <div class="header-right">Halo, Admin Budi</div>
             </header>
+            <main class="main-content">
+                <div class="page-card">
+                    <div class="filter-bar">
+                        <input type="text" id="searchInput" placeholder="Cari Nama atau NIK...">
+                        <select id="kategoriFilter">
+                            <option value="semua">Semua Kategori</option>
+                            <option value="DTKS">DTKS</option>
+                            <option value="ATS">ATS</option>
+                            <option value="Anak Panti">Anak Panti</option>
+                            <option value="Penyandang Disabilitas">Penyandang Disabilitas</option>
+                        </select>
+                        <select id="verifikasiFilter">
+                            <option value="semua">Semua Verifikasi</option>
+                            <option value="Sah">Sah</option>
+                            <option value="Tidak Valid">Tidak Valid</option>
+                        </select>
+                        <select id="statusFilter">
+                            <option value="semua">Semua Status</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
+                            <option value="Dalam Proses">Dalam Proses</option>
+                            <option value="Belum Diverifikasi">Belum Diverifikasi</option>
+                        </select>
+                    </div>
 
-            <div class="page-card">
-                <div class="filter-bar">
-                    <input type="text" id="searchInput" placeholder="Cari Nama atau NIK...">
-                    <select id="kategoriFilter">
-                        <option value="semua">Semua Kategori</option>
-                        <option value="DTKS">DTKS</option>
-                        <option value="ATS">ATS</option>
-                        <option value="Anak Panti">Anak Panti</option>
-                        <option value="Penyandang Disabilitas">Penyandang Disabilitas</option>
-                    </select>
-                    <select id="verifikasiFilter">
-                        <option value="semua">Semua Verifikasi</option>
-                        <option value="Valid">Valid</option>
-                        <option value="Tidak Valid">Tidak Valid</option>
-                    </select>
-                    <select id="statusFilter">
-                        <option value="semua">Semua Status</option>
-                        <option value="Diterima">Diterima</option>
-                        <option value="Ditolak">Ditolak</option>
-                        <option value="Dalam Proses">Dalam Proses</option>
-                        <option value="Belum Diverifikasi">Belum Diverifikasi</option>
-                    </select>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>NIK</th>
+                                    <th>Asal Sekolah</th>
+                                    <th>Sekolah Tujuan</th>
+                                    <th>Verifikasi</th>
+                                    <th>Kategori</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="siswaTableBody">
+                                <!-- Data dummy dari wilayah Demak dan Jepara -->
+                                <tr><td>Ahmad Fauzi</td><td>3321...</td><td>SMPN 1 DEMAK</td><td>SMAN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Budi Santoso</td><td>3321...</td><td>SMPN 2 MRANGGEN</td><td>SMKN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Citra Lestari</td><td>3320...</td><td>SMPN 1 JEPARA</td><td>SMAN 1 JEPARA</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Dewi Anggraini</td><td>3320...</td><td>SMPN 2 WELAHAN</td><td>SMKN 2 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Eko Prasetyo</td><td>3321...</td><td>SMPN 1 KARANGANYAR</td><td>SMAN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Fajar Nugroho</td><td>3320...</td><td>SMPN 1 BANGSRI</td><td>SMAN 1 BANGSRI</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Gita Permata</td><td>3321...</td><td>SMPN 1 BONANG</td><td>SMAN 3 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Hendra Wijaya</td><td>3320...</td><td>SMPN 1 KELING</td><td>SMKN 1 JEPARA</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Indah Sari</td><td>3321...</td><td>SMPN 1 GUNTUR</td><td>SMKN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Joko Susilo</td><td>3320...</td><td>SMPN 1 MLONGGO</td><td>SMKN 3 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Kartika Putri</td><td>3321...</td><td>SMPN 2 MRANGGEN</td><td>SMAN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Lia Amelia</td><td>3320...</td><td>SMPN 1 TAHUNAN</td><td>SMAN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Muhammad Rizki</td><td>3321...</td><td>SMPN 1 DEMPET</td><td>SMKN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Nadia Rahma</td><td>3320...</td><td>SMPN 1 PECANGAAN</td><td>SMKN 2 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Oscar Mahendra</td><td>3321...</td><td>SMPN 1 GAJAH</td><td>SMAN 2 DEMAK</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Putri Wulandari</td><td>3320...</td><td>SMPN 2 JEPARA</td><td>SMAN 1 BANGSRI</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Qori Ramadhan</td><td>3321...</td><td>SMPN 1 SAYUNG</td><td>SMAN 3 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Rian Hidayat</td><td>3320...</td><td>SMP ISLAM JEPARA</td><td>SMKN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Siti Nurhaliza</td><td>3321...</td><td>SMPN 1 WEDUNG</td><td>SMKN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Taufik Akbar</td><td>3320...</td><td>SMPN 1 DONOROJO</td><td>SMKN 3 JEPARA</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Umar Bakri</td><td>3321...</td><td>SMPN 1 DEMAK</td><td>SMAN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Vina Septiana</td><td>3320...</td><td>SMPN 1 JEPARA</td><td>SMAN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>ATS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Wahyu Setiawan</td><td>3321...</td><td>SMPN 2 MRANGGEN</td><td>SMKN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Xena Prameswari</td><td>3320...</td><td>SMPN 2 WELAHAN</td><td>SMKN 2 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Yusuf Ibrahim</td><td>3321...</td><td>SMPN 1 KARANGANYAR</td><td>SMAN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Zahra Aulia</td><td>3320...</td><td>SMPN 1 BANGSRI</td><td>SMAN 1 BANGSRI</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Andi Maulana</td><td>3321...</td><td>SMPN 1 BONANG</td><td>SMAN 3 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Bella Saphira</td><td>3320...</td><td>SMPN 1 KELING</td><td>SMKN 1 JEPARA</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Candra Gunawan</td><td>3321...</td><td>SMPN 1 GUNTUR</td><td>SMKN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Dina Marlina</td><td>3320...</td><td>SMPN 1 MLONGGO</td><td>SMKN 3 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Edwin Sanjaya</td><td>3321...</td><td>SMPN 2 MRANGGEN</td><td>SMAN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Fitri Handayani</td><td>3320...</td><td>SMPN 1 TAHUNAN</td><td>SMAN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Galih Prakoso</td><td>3321...</td><td>SMPN 1 DEMPET</td><td>SMKN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Hesti Purwanti</td><td>3320...</td><td>SMPN 1 PECANGAAN</td><td>SMKN 2 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Irfan Bachdim</td><td>3321...</td><td>SMPN 1 GAJAH</td><td>SMAN 2 DEMAK</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Jasmine Putri</td><td>3320...</td><td>SMPN 2 JEPARA</td><td>SMAN 1 BANGSRI</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Kevin Sanjaya</td><td>3321...</td><td>SMPN 1 SAYUNG</td><td>SMAN 3 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Lulu Tobing</td><td>3320...</td><td>SMP ISLAM JEPARA</td><td>SMKN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Mega Wati</td><td>3321...</td><td>SMPN 1 WEDUNG</td><td>SMKN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Nino Fernandez</td><td>3320...</td><td>SMPN 1 DONOROJO</td><td>SMKN 3 JEPARA</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>DTKS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Olivia Jensen</td><td>3321...</td><td>SMPN 1 DEMAK</td><td>SMAN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Panji Petualang</td><td>3320...</td><td>SMPN 1 JEPARA</td><td>SMAN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Rangga Azof</td><td>3321...</td><td>SMPN 2 MRANGGEN</td><td>SMKN 1 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Sandra Dewi</td><td>3320...</td><td>SMPN 2 WELAHAN</td><td>SMKN 2 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Teuku Wisnu</td><td>3321...</td><td>SMPN 1 KARANGANYAR</td><td>SMAN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Ussy Sulistiawaty</td><td>3320...</td><td>SMPN 1 BANGSRI</td><td>SMAN 1 BANGSRI</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Vicky Nitinegoro</td><td>3321...</td><td>SMPN 1 BONANG</td><td>SMAN 3 DEMAK</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Anak Panti</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Wulan Guritno</td><td>3320...</td><td>SMPN 1 KELING</td><td>SMKN 1 JEPARA</td><td><span class="status-label status-valid">Sah</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Sunting</button></td></tr>
+                                <tr><td>Yasmine Wildblood</td><td>3321...</td><td>SMPN 1 GUNTUR</td><td>SMKN 2 DEMAK</td><td><span class="status-label status-valid">Sah</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Sunting</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>NIK</th>
-                            <th>Sekolah Tujuan</th>
-                            <th>Verifikasi</th>
-                            <th>Kategori</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="siswaTableBody">
-                        <!-- 50 data dummy dengan kolom verifikasi baru -->
-                        <tr><td>Ahmad Fauzi</td><td>330101...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Budi Santoso</td><td>330102...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Citra Lestari</td><td>330103...</td><td>SMAN 3 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Dewi Anggraini</td><td>330104...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Eko Prasetyo</td><td>330105...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Fajar Nugroho</td><td>330106...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Gita Permata</td><td>330107...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Hendra Wijaya</td><td>330108...</td><td>SMKN 2 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Indah Sari</td><td>330109...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Joko Susilo</td><td>330110...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Kartika Putri</td><td>330201...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Lia Amelia</td><td>330202...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Muhammad Rizki</td><td>330203...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Nadia Rahma</td><td>330204...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Oscar Mahendra</td><td>330205...</td><td>SMAN 3 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Putri Wulandari</td><td>330206...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Qori Ramadhan</td><td>330207...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Rian Hidayat</td><td>330208...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Siti Nurhaliza</td><td>330209...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Taufik Akbar</td><td>330210...</td><td>SMKN 2 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Umar Bakri</td><td>330301...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Vina Septiana</td><td>330302...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>ATS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Wahyu Setiawan</td><td>330303...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Xena Prameswari</td><td>330304...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Yusuf Ibrahim</td><td>330305...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Zahra Aulia</td><td>330306...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Andi Maulana</td><td>330307...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Bella Saphira</td><td>330308...</td><td>SMAN 1 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Candra Gunawan</td><td>330309...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Dina Marlina</td><td>330310...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Edwin Sanjaya</td><td>330401...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Fitri Handayani</td><td>330402...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Galih Prakoso</td><td>330403...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Hesti Purwanti</td><td>330404...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Irfan Bachdim</td><td>330405...</td><td>SMKN 2 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>ATS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Jasmine Putri</td><td>330406...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Kevin Sanjaya</td><td>330407...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Lulu Tobing</td><td>330408...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Mega Wati</td><td>330409...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Anak Panti</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Nino Fernandez</td><td>330410...</td><td>SMAN 1 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>DTKS</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Olivia Jensen</td><td>330501...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Panji Petualang</td><td>330502...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Rangga Azof</td><td>330503...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>Penyandang Disabilitas</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Sandra Dewi</td><td>330504...</td><td>SMKN 2 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Teuku Wisnu</td><td>330505...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-proses">Dalam Proses</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Ussy Sulistiawaty</td><td>330506...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Vicky Nitinegoro</td><td>330507...</td><td>SMKN 2 Kota</td><td><span class="status-label status-invalid">Tidak Valid</span></td><td>Anak Panti</td><td><span class="status-label status-ditolak">Ditolak</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Wulan Guritno</td><td>330508...</td><td>SMAN 3 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>ATS</td><td><span class="status-label status-belum-diverifikasi">Belum Diverifikasi</span></td><td><button class="btn">Edit</button></td></tr>
-                        <tr><td>Yasmine Wildblood</td><td>330509...</td><td>SMAN 1 Kota</td><td><span class="status-label status-valid">Valid</span></td><td>DTKS</td><td><span class="status-label status-diterima">Diterima</span></td><td><button class="btn">Edit</button></td></tr>
-                    </tbody>
-                </table>
-                 <div class="pagination">
-                    <!-- Pagination can be added here -->
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-
-    <!-- 
-        ============================================================
-        BAGIAN YANG DIPERBAIKI: MODAL SEKARANG ADA DI DALAM FILE HTML
-        ============================================================
-    -->
     
     <!-- Modal Import Siswa -->
     <div id="importSiswaModal" class="modal-overlay hidden">

@@ -4,65 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuota Sekolah - ULAS Prototype</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-layout">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <div class="sidebar-header">ULAS</div>
+            <div class="sidebar-header"><span class="sidebar-logo-text">ULAS</span></div>
             <div class="sidebar-nav">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="siswa.html">Data Siswa</a>
-                <a href="sekolah.html">Kuota Sekolah</a>
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Dashboard</span></a>
+                <a href="siswa.html"><i class="fas fa-users"></i><span class="nav-text">Data Siswa</span></a>
+                <a href="sekolah.html"><i class="fas fa-school"></i><span class="nav-text">Kuota Sekolah</span></a>
             </div>
             <div class="sidebar-footer">
-                <a href="#" id="logout-btn">Logout</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span class="nav-text">Logout</span></a>
             </div>
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <div class="main-content-wrapper">
             <header class="main-header">
-                <h1>Kuota Sekolah</h1>
-                <div class="action-buttons">
-                    <button class="btn btn-primary" data-modal-target="tambahSekolahModal">Tambah Sekolah</button>
+                <div class="header-left">
+                    <button id="hamburger-menu" class="btn"><i class="fas fa-bars"></i></button>
+                    <h1>Kuota Sekolah</h1>
                 </div>
+                <div class="header-right">Halo, Admin Budi</div>
             </header>
+            <main class="main-content">
 
-            <div class="page-card">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>NPSN</th>
-                            <th>Nama Sekolah</th>
-                            <th>Kuota Afirmasi</th>
-                            <th>Terpakai</th>
-                            <th>Sisa</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>20300123</td>
-                            <td>SMAN 1 Kota</td>
-                            <td>50</td>
-                            <td>35</td>
-                            <td>15</td>
-                            <td><button class="btn">Edit</button></td>
-                        </tr>
-                        <tr>
-                            <td>20300456</td>
-                            <td>SMKN 2 Kota</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>0</td>
-                            <td><button class="btn">Edit</button>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
+
+                <div class="page-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>NPSN</th>
+                                <th>Nama Sekolah</th>
+                                <th>Wilayah</th>
+                                <th>Kuota Afirmasi</th>
+                                <th>Terpakai</th>
+                                <th>Sisa</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20320982</td>
+                                <td>SMAN 1 DEMAK</td>
+                                <td>Demak</td>
+                                <td>50</td>
+                                <td>42</td>
+                                <td>8</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320981</td>
+                                <td>SMAN 2 DEMAK</td>
+                                <td>Demak</td>
+                                <td>45</td>
+                                <td>45</td>
+                                <td>0</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320980</td>
+                                <td>SMAN 3 DEMAK</td>
+                                <td>Demak</td>
+                                <td>40</td>
+                                <td>31</td>
+                                <td>9</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320992</td>
+                                <td>SMKN 1 DEMAK</td>
+                                <td>Demak</td>
+                                <td>60</td>
+                                <td>58</td>
+                                <td>2</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320989</td>
+                                <td>SMKN 2 DEMAK</td>
+                                <td>Demak</td>
+                                <td>55</td>
+                                <td>51</td>
+                                <td>4</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320987</td>
+                                <td>SMAN 1 JEPARA</td>
+                                <td>Jepara</td>
+                                <td>50</td>
+                                <td>48</td>
+                                <td>2</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320979</td>
+                                <td>SMAN 1 BANGSRI</td>
+                                <td>Jepara</td>
+                                <td>40</td>
+                                <td>39</td>
+                                <td>1</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320977</td>
+                                <td>SMKN 1 JEPARA</td>
+                                <td>Jepara</td>
+                                <td>60</td>
+                                <td>60</td>
+                                <td>0</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20320974</td>
+                                <td>SMKN 2 JEPARA</td>
+                                <td>Jepara</td>
+                                <td>55</td>
+                                <td>50</td>
+                                <td>5</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                            <tr>
+                                <td>20362399</td>
+                                <td>SMKN 3 JEPARA</td>
+                                <td>Jepara</td>
+                                <td>50</td>
+                                <td>45</td>
+                                <td>5</td>
+                                <td><button class="btn">Sunting</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
     </div>
 
     <!-- Modal Tambah Sekolah -->
@@ -81,6 +161,13 @@
                     <div class="form-group">
                         <label for="nama_sekolah">Nama Sekolah</label>
                         <input type="text" id="nama_sekolah">
+                    </div>
+                    <div class="form-group">
+                        <label for="wilayah">Wilayah</label>
+                        <select id="wilayah">
+                            <option>Demak</option>
+                            <option>Jepara</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="kuota">Kuota Afirmasi</label>

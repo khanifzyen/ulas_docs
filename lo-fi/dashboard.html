@@ -5,48 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - ULAS Prototype</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
 </head>
+<body>
 <body>
     <div id="app-layout">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <div class="sidebar-header">ULAS</div>
+            <div class="sidebar-header">
+                <span class="sidebar-logo-text">ULAS</span>
+            </div>
             <div class="sidebar-nav">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="siswa.html">Data Siswa</a>
-                <a href="sekolah.html">Kuota Sekolah</a>
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="siswa.html">
+                    <i class="fas fa-users"></i>
+                    <span class="nav-text">Data Siswa</span>
+                </a>
+                <a href="sekolah.html">
+                    <i class="fas fa-school"></i>
+                    <span class="nav-text">Kuota Sekolah</span>
+                </a>
             </div>
             <div class="sidebar-footer">
-                <a href="#" id="logout-btn">Logout</a>
+                <a href="#" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
             </div>
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <div class="main-content-wrapper">
             <header class="main-header">
-                <h1>Dashboard</h1>
-                <div>Halo, Admin Budi</div>
+                <div class="header-left">
+                    <button id="hamburger-menu" class="btn"><i class="fas fa-bars"></i></button>
+                        <h1>Dashboard</h1>
+                    </div>
+                <div class="header-right">Halo, Admin Budi</div>
             </header>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>Total Pendaftar</h3>
-                    <p>1,520</p>
+            <main class="main-content">               
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Pendaftar</h3>
+                        <p>1,520</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Diterima</h3>
+                        <p>1,200</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Ditolak</h3>
+                        <p>120</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Dalam Proses</h3>
+                        <p>200</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>Diterima</h3>
-                    <p>1,200</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Ditolak</h3>
-                    <p>120</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Dalam Proses</h3>
-                    <p>200</p>
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

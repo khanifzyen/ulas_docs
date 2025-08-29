@@ -158,6 +158,6 @@
 
 | Versi | Tanggal | Perubahan | Penulis |
 | :--- | :--- | :--- | :--- |
-| 1.0 | 24 Okt 2023 | Versi awal dokumen dibuat. | AI Assistant |
+| 1.0 | 26 Agustus 2025 | Versi awal dokumen dibuat. | Akhmad Khanif Zyen |
 
 ---

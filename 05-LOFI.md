@@ -120,10 +120,10 @@ Halaman inti tempat sebagian besar pekerjaan admin dilakukan.
         *   **[Tombol Aksi Sekunder: Tambah Siswa]** di samping tombol import.
     3.  **[Area Filter & Pencarian]**: Baris di atas tabel berisi:
         *   **[Input Field: Cari Siswa...]** (berdasarkan Nama/NIK).
-        *   **[Dropdown: Filter Kategori]** (Semua, DTKS, Disabilitas).
-        *   **[Dropdown: Filter Status]** (Semua, Diterima, Ditolak, Proses).
+        *   **[Dropdown: Filter Kategori]** (Semua, DTKS, ATS, Anak Panti, Penyandang Disabilitas).
+        *   **[Dropdown: Filter Status]** (Semua, Diterima, Ditolak, Dalam Proses, Belum Diverifikasi).
     4.  **[Tabel Data Siswa]**: Tabel utama yang menampilkan daftar siswa.
-        *   **[Kolom Tabel]**: `Nama`, `NIK`, `Sekolah Tujuan`, `Verifikasi Dukcapil`, `Verifikasi DTKS`, `Kategori`, `Status`, `Aksi`.
+        *   **[Kolom Tabel]**: `Nama`, `NIK`,`Sekolah Asal`, `Sekolah Tujuan`, `Verifikasi Dukcapil`, `Verifikasi DTKS`, `Kategori`, `Status`, `Aksi`.
         *   **[Indikator Status Visual]**: Status verifikasi dan status penerimaan menggunakan label berwarna (misal: "Padan" hijau, "Ditolak" merah).
         *   **[Tombol Aksi per Baris]**: Ikon untuk "Edit" dan "Hapus" di kolom Aksi.
     5.  **[Area Paginasi]**: Navigasi halaman di bawah tabel (misal: `< Sebelumnya | 1 | 2 | 3 | Berikutnya >`).
